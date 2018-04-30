@@ -1,6 +1,17 @@
 # Test Symfony
 
-## Introduction
+## Projet
+* Ce projet permet de parser des fichiers txt contenus dans web/files/.
+* Les fichiers attendus sont au format HL7 ADT. Dans cette version il n'y a pas de vérification sur les
+ sur les ID de segments pour sécuriser le format des fichiers lus.
+* Les données communes aux personnes (médecin et patient) sont stockées à part car on peut immaginer que le système pourrait identifier les médecins qui sont également patient d'autres médecins.
+Si évolution en ce sens il doit y avoir, le système le permettra. 
+* On pourrait également ajouter un système de dédoublonnage si on décide de lancer plusieurs fois le programme. 
+Aujourd'hui il n'insert pas en double les médecin avec le même RPPS (puisque c'est leur identifiant unique).
+* On pourrait également sauvegarder en base de données d'autres informations issues des fichiers.
+* Pour tester le système il faut traiter au moins 1 fichier.
+
+## HL7 
 >HL7 est un standard international pour les échanges informatisés de données cliniques, financières et administratives entre systèmes d'information hospitaliers (SIH).
 HL7 v2.5
 
@@ -54,18 +65,4 @@ Le message ci-dessus contient les informations suivantes :
 **Nom :** Medecin  
 **Prénom :** Traitant  
 **RPPS :** 99700067210  
-
-## Exercice
-Parser les données HL7 et les insérer en base:
-
-* Forker ce repo GIT sur votre Gitlab/Github
-* Créer les entités nécessaires au projet
-* Parser les fichiers HL7 présent dans `web/files/` à l’aide de PHP/Symfony
-* Insérer les entités générées en base de données.
-
-## Important
-* Faire une interface web est un plus mais c'est FACULTATIF, plus vous livrez vite et bien, mieux c'est !
-* Soigner votre code
-* Modifier ce readme dans votre repo pour expliquer votre projet.
-* Envoyer le lien github/gitlab de votre projet afin que l'on puisse regarder votre code.
 
